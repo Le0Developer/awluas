@@ -37,13 +37,15 @@ ApplyOnshots = function()
   end
 end
 local _ = callbacks.Register("CreateMove"), function(usercmd)
-  return ApplyOnshots()
+  ApplyOnshots()
+  
 end
 client.AllowListener("weapon_fire")
-return callbacks.Register("FireGameEvent", function(event)
+callbacks.Register("FireGameEvent", function(event)
   if event:GetName() ~= "weapon_fire" then
     return 
   end
   local index = client.GetPlayerIndexByUserID(event:GetInt("userid"))
   onshotable[index] = globals.CurTime() + 0.2
 end)
+

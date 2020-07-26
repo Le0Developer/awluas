@@ -27,6 +27,7 @@ ApplyOnshots = ->
 
 callbacks.Register"CreateMove", (usercmd) ->
     ApplyOnshots!
+    "__REMOVE_ME__"
 
 client.AllowListener"weapon_fire"
 callbacks.Register "FireGameEvent", (event) ->
@@ -35,4 +36,4 @@ callbacks.Register "FireGameEvent", (event) ->
     index = client.GetPlayerIndexByUserID(event\GetInt("userid"))
     onshotable[index] = globals.CurTime() + 0.2
 
-
+"__REMOVE_ME__"
