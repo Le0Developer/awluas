@@ -36,10 +36,10 @@ ApplyOnshots = function()
     end
   end
 end
-local _ = callbacks.Register("CreateMove"), function(usercmd)
+callbacks.Register("CreateMove", function(usercmd)
   ApplyOnshots()
   
-end
+end)
 client.AllowListener("weapon_fire")
 callbacks.Register("FireGameEvent", function(event)
   if event:GetName() ~= "weapon_fire" then
