@@ -461,7 +461,7 @@ http.Get "__VERSION_URL__", (content) ->
     -- update, yay!
     UPD_HEIGHT = 180
     UPDATE = gui.Groupbox GUI_TAB, "Update Available", GUI_TAB_CTRL_POS.x, GUI_TAB_CTRL_POS.y + GUI_TAB_CTRL_POS.h, 618, UPD_HEIGHT
-    text = gui.Text UPDATE, "A new update has been spotted."
+    text = gui.Text UPDATE, "A new update has been spotted. You are using #{__human_version__}"
     minified = gui.Checkbox UPDATE, "updater.minified", "Download minified version", true
     local btn
     btn = with gui.Button UPDATE, "Update", ->

@@ -22,9 +22,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 Github: https://github.com/le0developer/awluas/blob/master/playerlist/playerlist.moon
-Automatically generated and compiled on Sun Sep 13 11:49:57 2020
+Automatically generated and compiled on Sun Sep 13 12:13:28 2020
 ]]
-local __version__ = [[912aafa53be0c4d958df8e4f2c24202ec9dae51a9ef24ee156c22dd16f39a0bf]]
+local __version__ = [[de91c464f35aab3adf8fb76c7b159f6dce21c4936c4d6b746fc920d10799f0d7]]
 local __human_version__ = "1.3.0"
 local randomname = ""
 for i = 1, 16 do
@@ -667,7 +667,7 @@ http.Get([[https://raw.githubusercontent.com/Le0Developer/awluas/master/playerli
   end
   local UPD_HEIGHT = 180
   local UPDATE = gui.Groupbox(GUI_TAB, "Update Available", GUI_TAB_CTRL_POS.x, GUI_TAB_CTRL_POS.y + GUI_TAB_CTRL_POS.h, 618, UPD_HEIGHT)
-  local text = gui.Text(UPDATE, "A new update has been spotted.")
+  local text = gui.Text(UPDATE, "A new update has been spotted. You are using " .. tostring(__human_version__))
   local minified = gui.Checkbox(UPDATE, "updater.minified", "Download minified version", true)
   local btn
   do
