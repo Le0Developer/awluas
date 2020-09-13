@@ -1,9 +1,34 @@
 -- Based on https://pastebin.com/raw/dqHRhQi2
+-- which is a license violation of https://github.com/SquidDev-CC/Howl/tree/master/howl/lexer
+-- ???????? GJ Squiddev, ig?
 -- Changes:
---   Originally made for ComputerCraft(a minecraft mod), but ported to normal lua
---   Added command line interface
+--   Ported to normal lua, was made for ComputerCraft originally
+--		(a minecraft mod)
+--   Patched to work with Lua5.3+
 
-local function _W(f) local e=setmetatable({}, {__index = getfenv()}) return setfenv(f,e)() or e end
+local _W
+if not getfenv then -- lua 5.3+ compatibility
+					-- not real getfenv/setfenv emulation, but works
+	function _W(f)
+		local loaded = false
+		return setmetatable({}, {__index = function(self, key)
+			if not loaded then
+				loaded = f()
+			end
+			return loaded[key]
+		end, __call = function(self, ...)
+			if not loaded then
+				loaded = f()
+			end
+			return loaded(...)
+		end})
+	end
+else
+	function _W(f) 
+		local e=setmetatable({}, {__index = getfenv()}) 
+		return setfenv(f,e)() or e 
+	end
+end
 Utils=_W(function()
 return {
 	CreateLookup = function(tbl)
@@ -63,6 +88,19 @@ StatListCloseKeywords = createLookup{'end', 'else', 'elseif', 'until'}
 
 --- Unary operators
 UnOps = createLookup{'-', 'not', '#'}
+
+return {
+	WhiteChars = WhiteChars,
+	EscapeLookup = EscapeLookup,
+	LowerChars = LowerChars,
+	UpperChars = UpperChars,
+	Digits = Digits,
+	HexDigits = HexDigits,
+	Symbols = Symbols,
+	Keywords = Keywords,
+	StatListCloseKeywords = StatListCloseKeywords,
+	UnOps = UnOps
+}
 end)
 Scope=_W(function()
 --- Holds variables for one scope
@@ -2042,4 +2080,6 @@ return {
 }
 end)
 
-Rebuild.MinifyFile( ... )
+return {
+	Rebuild = Rebuild
+}
