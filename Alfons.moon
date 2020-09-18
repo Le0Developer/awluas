@@ -71,7 +71,6 @@ ensure_path = (path) ->
 tasks:
     build: =>
         name = @n or @name
-        print name
         if type(name) != "string"
             print style "%{red}No name specified. Use '-n' or '--name'"
             return
@@ -138,7 +137,6 @@ tasks:
 
     test: =>
         name = @n or @name
-        print name
         if type(name) != "string"
             print style "%{red}No name specified. Use '-n' or '--name'"
             return
