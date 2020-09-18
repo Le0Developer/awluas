@@ -20,13 +20,12 @@ For building you need:
 ### How to build
 
 1. Go with your favorite shell (bash, cmd.exe, ...) into this directory
-2. Execute `alfons build NAME` to build the project, where NAME is the name of the lua.
-3. You should find `NAME.lua` and `NAME.min.lua` in the `dist` directory
-after executing.
+2. Execute `alfons build -n NAME` to build the project, where NAME is the name of the lua.
+3. Find the paths from the output and copy the files into your aimware directory. (sample output: `Done. The lua can be found in 'dist/onshot.lua'`)
 
 **Examples:**
-    - `alfons build onshot` and then `dist/onshot.lua` or `dist/onshot.min.lua`
-    - `alfons build xml` and then include the content of `dist/xml.min.lua` with a `loadstring([[XML]])()` into your program
+    - `alfons build -n onshot` and then `dist/onshot.lua` or `dist/onshot.min.lua`
+    - `alfons build -n xml` and then include the content of `util/dist/xml.min.lua` with a `loadstring([[XML]])()` into your program
 
 ## Testing
 
@@ -43,12 +42,12 @@ after executing.
 ### How to test
 
 1. Go into this directory.
-1. Execute `alfons test NAME` to test the project.
+1. Execute `alfons test -n NAME` to test the project.
    
 > **NOTE**: Not every project has a test!
 
 **Examples:**
-    - `alfons test xml`
+    - `alfons test -n xml`
 
 ## LICENSE
 
